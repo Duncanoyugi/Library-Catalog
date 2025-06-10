@@ -10,13 +10,11 @@ export class DatabaseService {
   private pool!: Pool;
 
   constructor(private readonly configService: ConfigService) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const host: string | undefined = this.configService.get<string>('DB_HOST');
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+
     const port: string | undefined = this.configService.get<string>('DB_PORT');
     const user: string | undefined = this.configService.get<string>('DB_USER');
     const password: string | undefined =
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       this.configService.get<string>('DB_PASSWORD');
     const database: string | undefined =
       this.configService.get<string>('DB_NAME');

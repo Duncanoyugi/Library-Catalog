@@ -29,14 +29,13 @@ BEGIN
     -- Get the book title before deletion
     SELECT books.title INTO deleted_title FROM books WHERE books.id = p_id;
     IF NOT FOUND THEN
-        RAISE EXCEPTION 'Book with ID % not found', p_id;
+        RAISE EXCEPTION 'Book with id % not found', p_id;
     END IF;
     -- Delete the book
     DELETE FROM books WHERE books.id = p_id;
     RETURN QUERY SELECT true, 'Book "' || deleted_title || '" has been permanently deleted';
 END;
 $$ LANGUAGE plpgsql;
-
 
 CREATE OR REPLACE FUNCTION sp_restore_book(p_id INTEGER)
 RETURNS TABLE(

@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:3000
+
+### CREATE A NEW BOOK
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+    "title": "How to be successful",
+    "author": "John Doe",
+    "publication_year": 2024,
+    "isbn": "978-3-16-148410-0"
+}
+
+### GET All BOOKS
+GET http://localhost:3000/books
+
+### Get all active BOOKS
+GET http://localhost:3000/books?active=true
+
+### GET BOOK by title
+GET {{baseUrl}}/books/title/How to be successful
+### GET BOOK by ID
+GET {{baseUrl}}/books/1
+
+
+### UPDATE BOOK data
+PATCH {{baseUrl}}/books/1
+Content-Type: application/json
+
+{
+    "title": "The Art of Wealth",
+    "author": "Jane Doe",
+    "publication_year": 2024,
+    "isbn": "978-3-16-148410-0"
+}
+
+

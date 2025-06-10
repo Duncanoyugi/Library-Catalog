@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Post, Body } from '@nestjs/common';
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+interface CreateBookDto {
+  title: string;
+  author: string;
+  publishedDate?: string;
+  // Add other fields as needed
+}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+@Controller('books')
+export class BooksController {
+  @Post()
+  create(@Body() createBookDto: CreateBookDto) {
+    // Your logic to create a book
+    return { message: 'Book created', data: createBookDto };
   }
 }
